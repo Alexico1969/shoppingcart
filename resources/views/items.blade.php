@@ -84,18 +84,30 @@
                     echo "<br/>";
 
                     // Create database
-                    $sql = "INSERT into items (title) VALUES ('Curry')";
+                    /*$sql = "";
 
                     if ($conn->query($sql) === TRUE) {
                     echo "Added item successfully";
                     } else {
                     echo "Error creating table: " . $conn->error;
-                    }
+                    } */
+
 
                     $conn->close();
 
             ?>
-    
+
+            @if(count($items) > 0)
+                <ul>
+                    @foreach ($items as $item)
+                        <li> {{ $item->title }} </li>
+                    @endforeach
+
+                </ul>
+            @else
+                Er zijn geen boodschappen
+            @endif
+            <br/>
             <ul>
                 <li>Hertog Jan</li>
                 <li>Frikandellen</li>
