@@ -64,6 +64,37 @@
         </style>
     </head>
     <body>
+
+            <?php
+
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "password";
+                    $database = "shoppingcart";
+
+                    // Create connection
+                    $conn = new mysqli($servername, $username, $password, $database);
+
+                    // Check connection
+                    if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                    }
+                    echo "Connected successfully";
+
+                    echo "<br/>";
+
+                    // Create database
+                    $sql = "INSERT into items (title) VALUES ('Curry')";
+
+                    if ($conn->query($sql) === TRUE) {
+                    echo "Added item successfully";
+                    } else {
+                    echo "Error creating table: " . $conn->error;
+                    }
+
+                    $conn->close();
+
+            ?>
     
             <ul>
                 <li>Hertog Jan</li>
